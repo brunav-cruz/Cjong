@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include<stdbool.h>
-#include <conio.h>
 #include <wchar.h>
+#include <stdbool.h>
+#include <conio.h>
 #include <windows.h>
 #include <stdlib.h>
 #include "console.h"
@@ -11,13 +11,15 @@ void printMenu();
 void menuChoice();
 
 void main(){
+    _setmode(_fileno(stdout), 0x00020000);
     Reset();
     printMenu();
     menuChoice();
+    
 }
 
 void printMenu(){
-    gotoxy(3,1);
+    gotoxy(0,1);
     wprintf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
     gotoxy(78,10);
@@ -64,7 +66,7 @@ void printMenu(){
     gotoxy(116,21);
     wprintf(L"└───────────────┘");
 
-    gotoxy(3,40);
+    gotoxy(0,40);
     wprintf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
     gotoxy(75, 28);
