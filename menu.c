@@ -6,15 +6,19 @@
 #include <stdlib.h>
 #include "console.h"
 
+
+void printMenu();
+void menuChoice();
+
 void main(){
-    reset();
-    gotoxy(5,5);
-    wprintf(L"ablulbe");
+    Reset();
+    printMenu();
+    menuChoice();
 }
 
 void printMenu(){
     gotoxy(3,1);
-    wprinf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
+    wprintf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
     gotoxy(78,10);
     wprintf(L"┌────────────┐");
@@ -61,58 +65,34 @@ void printMenu(){
     wprintf(L"└───────────────┘");
 
     gotoxy(3,40);
-    wprinf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
+    wprintf(L"────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
     gotoxy(75, 28);
     menuChoice(0);
 
 }
 
-void clearConsole(){
-    system('cls');
-}
-
-void menuChoice(option){
+void menuChoice(){
     int option;
-    wprintf("ESCOLHA UMA OPÇÃO: ");
-    scanf("%d", &option);
-    while(option == 0){
-        option = controle();
-    }
+    wprintf(L"ESCOLHA UMA OPCAO: ");
+    wscanf(L"%d", &option);
 
-    while(true){
+    while(1){
         if(option == 1){
-            system('cls');
-            /* dificuldade.printDif(); */
+            Reset();
             break;
-        } elif(option == 2){
-            system('cls');
-        }elif(option == 3){
-            system('cls');
-        }elif(option == 4){
-            system('cls');
+        }else if(option == 2){
+            Reset();
+            break;
+        }else if(option == 3){
+            Reset();
+            break;
+        }else if(option == 4){
+            Reset();
         }else{
             printMenu();
             break;
         }
     return;
-    }
-}
-
-void controle(){
-    getch_select = getch.read_event();
-    if(getch_select.event_type == getch.KEY_DOWN){
-        if(getch_select.name == '1'){
-            return 1;
-        }
-        if(getch_select.name == '2'){
-            return 2;
-        }
-        if(getch_select.name == '3'){
-            return 3;
-        }
-        if(getch_select.name == '4'){
-            return 4;
-        }
     }
 }
